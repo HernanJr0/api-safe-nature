@@ -1,23 +1,24 @@
 require('dotenv').config()
 
 const express = require('express')
-const app = express()
+const cors = require('cors')
+const mongoose = require('mongoose')
 const routes = require('./routes')
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-  res.header('Access-Control-Allow-Credentials', 'true')
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  )
-  next()
+const app = express()
+
+app.use(cors())
+
+mongoose.connect(process.env.MONGO_API_SECRET, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
 
-const mongoose = require('mongoose')
-mongoose.connect(process.env.MONGO_API_SECRET)
+app.use(express.json())
 
 app.use(routes)
 
-app.listen(8000)
+const PORT = process.env.PORT || 8000
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`)
+})
