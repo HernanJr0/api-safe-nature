@@ -25,6 +25,6 @@ module.exports = {
 
   async delete(request, response) {
     await Ocorrencias.findByIdAndDelete(request.params.id)
-    return response.json({ message: 'Ocorrencia deletado com sucesso' })
+    return response.json({ message: 'Ocorrencia deletada com sucesso' })
   },
 }
