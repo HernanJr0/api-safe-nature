@@ -4,7 +4,7 @@ const OcorrenciasSchema = new mongoose.Schema({
     nome: String,
     endereco: String,
     descricao: String,
-    dataImagem: String
+    data: String,
 });
 
 module.exports = mongoose.model('Ocorrencias', OcorrenciasSchema);

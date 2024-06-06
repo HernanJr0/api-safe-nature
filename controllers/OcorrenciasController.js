@@ -2,8 +2,8 @@ const Ocorrencias = require('../models/OcorrenciasData')
 
 module.exports = {
   async create(request, response) {
-    const { nome, endereco, descricao, imagem } = request.body
-    const ocorrencias = new Ocorrencias({ nome, endereco, descricao, imagem })
+    const { nome, endereco, descricao, data } = request.body
+    const ocorrencias = new Ocorrencias({ nome, endereco, descricao, data })
     await ocorrencias.save()
     return response.json(ocorrencias)
   },
