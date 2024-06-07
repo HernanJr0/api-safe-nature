@@ -6,6 +6,7 @@ const OcorrenciasSchema = new mongoose.Schema({
     descricao: String,
     data: String,
     dataImagem: String,
+    imagem: String,
 });
 
 module.exports = mongoose.model('Ocorrencias', OcorrenciasSchema);
